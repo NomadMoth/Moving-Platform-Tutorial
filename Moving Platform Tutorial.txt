@@ -1,0 +1,34 @@
+To start, create three variables, one public array for the waypoints, one private integer which will allow
+the user to choose how many waypoints they wish to have in the inspector, and a public float to allow control
+over the speed of movement for the platform.
+
+You should have something like this:
+
+	public GameObject[] waypoints;
+    private int currentWaypointIndex = 0;
+    public float speed = 2f;
+	
+In the update function, create an if statement. Within this statement will be the conditions that must be met
+for the platform to travel between waypoints.
+
+void Update()
+    {
+        // This checks whether the platforms is close enough to perform the
+        // next statement
+        if (Vector3.Distance(waypoints[currentWaypointIndex].transform.position,
+            transform.position) < .1f)
+        {
+            // This adds one to the index, switching waypoint targets for the platform
+            currentWaypointIndex++;
+            
+            // This resets the index to the beginning, resulting in the platform returning
+            // to the first waypoint
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                currentWaypointIndex = 0;
+            }
+        }
+        // This moves the platform to the currently designated waypoint
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
+    }
+	
