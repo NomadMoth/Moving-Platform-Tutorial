@@ -1,6 +1,8 @@
-<Header> Variables </Header>
+# Moving Platform Tutorial
 
-To start, create three variables, one public array for the waypoints, one private integer which will allow
+## 1. Variables
+
+To start, create three variables, one public game object array for the waypoints, one private integer which will allow
 the user to choose how many waypoints they wish to have in the inspector, and a public float to allow control
 over the speed of movement for the platform.
 
@@ -9,7 +11,9 @@ You should have something like this:
 	  public GameObject[] waypoints;
     private int currentWaypointIndex = 0;
     public float speed = 2f;
-	
+
+## 2. If Statements
+
 In the update function, create an if statement. Within this statement will be the conditions that must be met
 for the platform to travel between waypoints.
 
@@ -29,7 +33,9 @@ for the platform to travel between waypoints.
         // This moves the platform to the currently designated waypoint
         transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
     }
-	
+
+## 3. In Unity
+
 In Unity, create an empty game object and rename it to Moving Platform. Create three children; two more empty game objects (rename to Waypoint1 and Waypoint2) and a cube.
 
 ![Screenshot 2021-12-08 163407](https://user-images.githubusercontent.com/72862464/145250041-a7c81e3a-df09-4f84-86c0-13301961dfcb.jpg)
