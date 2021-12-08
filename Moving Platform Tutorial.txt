@@ -1,3 +1,5 @@
+
+
 To start, create three variables, one public array for the waypoints, one private integer which will allow
 the user to choose how many waypoints they wish to have in the inspector, and a public float to allow control
 over the speed of movement for the platform.
@@ -9,7 +11,7 @@ You should have something like this:
     public float speed = 2f;
 	
 In the update function, create an if statement. Within this statement will be the conditions that must be met
-for the platform to travel between waypoints.
+for the platform to travel between waypoints. See below.
 
 void Update()
     {
@@ -32,3 +34,6 @@ void Update()
         transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
     }
 	
+Now, within Unity, create an empty game object and name it MovingPlatform or something similar, place two more empty game objects (name them Waypoint1 and Waypoint2) and a cube as children to the MovingPlatform game object.
+
+Attach the script to the cube (so only the cube moves to the waypoints), then drag and drop the waypoints from the hierarchy into the script boxes in the inspector.
